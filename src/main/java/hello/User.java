@@ -7,19 +7,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 	@Id
 	private String id;
-	private final String username;
-	private final String email;
-	private final String fullname;
-	private final Integer age;
-	private final String location;
-	private final String gender;
+	private String username;
+	private String email;
+	private String fullname;
+	private Integer age;
+	private String location;
+	private String gender;
 	
+	public User() {
+	}
+	
+	// This constructor is needed when reading data from DB:
 	public User(String username,
-				String email,
-				String fullname,
-				Integer age,
-				String location,
-				String gender) {
+			String email,
+			String fullname,
+			Integer age,
+			String location,
+			String gender) {
 		this.username = username;
 		this.email = email;
 		this.fullname = fullname;
@@ -28,7 +32,21 @@ public class User {
 		this.gender = gender;
 	}
 
-	
+	// This constructor is needed when reading data from web API:
+	public User(String username,
+				String email,
+				String fullname,
+				String ageStr,
+				String location,
+				String gender) {
+		this.username = username;
+		this.email = email;
+		this.fullname = fullname;
+		this.age = Integer.parseInt(ageStr);
+		this.location = location;
+		this.gender = gender;
+	}
+
 	public String getId() {
 		return id;
 	}

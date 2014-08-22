@@ -8,13 +8,21 @@ import java.util.concurrent.atomic.AtomicLong;
 
 
 
+
+
+
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 	
 	@Autowired
@@ -29,10 +37,11 @@ public class UserController {
 	}
 	*/
 	
-	@RequestMapping("/users/userlist")
+	@RequestMapping("/userlist")
 	public List<User> userlist() {
 		List<User> userlist = null;
-			
+		
+		/*
 		repository.deleteAll();
 		
 		repository.save(new User(
@@ -44,10 +53,20 @@ public class UserController {
 		repository.save(new User(
 			 "test3", "test3@test.com", "Lady Gaga", 28,
 			 	"NYC", "Female"));
+		*/
 		
 		userlist = repository.findAll();
 		
 		return userlist;
+	}
+	
+	@RequestMapping("/adduser")
+	public UserDBStatus adduser(@RequestBody @Valid User user) {
+		User userSaved = repository.save(user);
+		UserDBStatus status = new UserDBStatus(
+			(userSaved != null) ? "" : "failed"
+		);
+		return status; 
 	}
 	
 	@RequestMapping("/greeting")
