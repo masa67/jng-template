@@ -21,15 +21,6 @@ public class UserController {
 	@Autowired
 	private UserRepository repository;
 	
-	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
-	
-	/*
-	public static void setRepository(UserRepository repository) {
-		UserController.repository = repository;
-	}
-	*/
-	
 	@RequestMapping("/userlist")
 	public List<User> userlist() {
 		List<User> userlist = null;
@@ -63,14 +54,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/deleteuser/{id}", method=RequestMethod.DELETE)
-	public UserDBStatus deleteuser(@PathVariable("id") String id) {
+	public UserDBStatus deleteuser(@PathVariable String id) {
 		repository.delete(id);
 		return new UserDBStatus(""); 
-	}
-	
-	@RequestMapping("/greeting")
-	public Greeting greeting(@RequestParam(value="name", required=false, defaultValue="World") String name) {
-		return new Greeting(counter.incrementAndGet(),
-							String.format(template, name));
 	}
 }

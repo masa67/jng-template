@@ -3,7 +3,7 @@ angular.module('MainCtrl', []).controller('MainController',
     ['$scope', 'users', function($scope, users) {
 
     $scope.userList = users.getUserList();
-
+    
     $scope.userDetail = {};
     $('#userList table tbody').on('click', 'td a.linkshowuser', function(event) {
         // Prevent Link from Firing
