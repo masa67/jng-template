@@ -17,15 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 	
-	/*
-	private static MongoRepository<User, String> repository;
-	*/
+	@Autowired
+	private UserRepository repository;
 	
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
 	
 	/*
-	public static void setRepository(MongoRepository<User, String> repository) {
+	public static void setRepository(UserRepository repository) {
 		UserController.repository = repository;
 	}
 	*/
@@ -33,12 +32,7 @@ public class UserController {
 	@RequestMapping("/users/userlist")
 	public List<User> userlist() {
 		List<User> userlist = null;
-		
-		/*
-		if (repository == null) {
-			repository = Application.getRepository();
-		}
-		
+			
 		repository.deleteAll();
 		
 		repository.save(new User(
@@ -51,8 +45,8 @@ public class UserController {
 			 "test3", "test3@test.com", "Lady Gaga", 28,
 			 	"NYC", "Female"));
 		
-		List<User> userlist = repository.findAll();
-		*/
+		userlist = repository.findAll();
+		
 		return userlist;
 	}
 	
