@@ -3,22 +3,15 @@ package hello;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-
-
-
-
-
-
-
-
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -67,6 +60,12 @@ public class UserController {
 			(userSaved != null) ? "" : "failed"
 		);
 		return status; 
+	}
+	
+	@RequestMapping(value="/deleteuser/{id}", method=RequestMethod.DELETE)
+	public UserDBStatus deleteuser(@PathVariable("id") String id) {
+		repository.delete(id);
+		return new UserDBStatus(""); 
 	}
 	
 	@RequestMapping("/greeting")
