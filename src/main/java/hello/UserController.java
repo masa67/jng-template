@@ -21,11 +21,8 @@ public class UserController {
 	@Autowired
 	private UserRepository repository;
 	
-	@RequestMapping("/userlist")
-	public List<User> userlist() {
-		List<User> userlist = null;
+	void initDB() {
 		
-		/*
 		repository.deleteAll();
 		
 		repository.save(new User(
@@ -37,10 +34,12 @@ public class UserController {
 		repository.save(new User(
 			 "test3", "test3@test.com", "Lady Gaga", 28,
 			 	"NYC", "Female"));
-		*/
-		
-		userlist = repository.findAll();
-		
+				
+	}
+	
+	@RequestMapping("/userlist")
+	public List<User> userlist() {
+		List<User> userlist = repository.findAll();
 		return userlist;
 	}
 	
