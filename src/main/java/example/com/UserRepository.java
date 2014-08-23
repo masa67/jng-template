@@ -1,4 +1,4 @@
-package hello;
+package example.com;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -1,4 +1,4 @@
-package hello;
+package example.com;
 
 public class UserDBStatus {
 	public String msg;
