@@ -21,8 +21,19 @@ A couple of changes were required to the Angular part:
 
 Install [MongoDB](https://www.mongodb.org). Start the daemon.
 
-Use Maven to build the Java application.
+Use Maven to build the Java application:
+
+        $ mvn package
 
 # Execution
 
-Start the application and go to [http://localhost:8080](/http://localhost:8080/).
+Start the application:
+
+        $ java -jar target/jng-template-2.0.jar
+ 
+ Go to: [http://localhost:8080](/http://localhost:8080/).
+ 
+# Versions
+ 
+* v.2.0: Added guidelines for running from command line.
+* v.1.0: The first functional version. 
