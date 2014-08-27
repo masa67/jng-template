@@ -38,8 +38,18 @@
         </plugins>
         <resources>
         	<resource>
-        		<directory>src/main/resources</directory>
+        		<directory>src/main/resources/static</directory>
         		<filtering>true</filtering>
+        		<includes>
+        			<include>index.html</include>
+        		</includes>
+			</resource>
+			<resource>
+        		<directory>src/main/resources/static</directory>
+        		<filtering>false</filtering>
+        		<excludes>
+        			<exclude>index.html</exclude>
+        		</excludes>
         	</resource>
         </resources>
     </build>
