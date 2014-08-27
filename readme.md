@@ -29,11 +29,12 @@ Use Maven to build the Java application:
 
 Start the application:
 
-        $ java -jar target/jng-template-2.0.jar
+        $ java -jar target/jng-template-3.0.jar
  
  Go to: [http://localhost:8080](/http://localhost:8080/).
  
 # Versions
  
+* v.3.0: Introduced `application.properties`, configures the name of the database. 
 * v.2.0: Added guidelines for running from command line.
 * v.1.0: The first functional version. 
