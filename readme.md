@@ -35,6 +35,8 @@ Start the application:
  
 # Versions
  
-* v.3.0: Introduced `application.properties`, configures the name of the database. 
+* v.3.0: 
+  * Introduced `application.properties`, configures the name of the database.
+  * `index.html` to show the version number from `pom.xml` via [Maven resource filtering](https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html).
 * v.2.0: Added guidelines for running from command line.
 * v.1.0: The first functional version. 
